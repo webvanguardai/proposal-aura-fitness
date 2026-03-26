@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Vanguard — Website Proposal for Motion Fitness Center</title>
+  <meta name="description" content="Custom website proposal for Motion Fitness Center by Web Vanguard. See what we built for Aura Fitness Studio.">
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0A0A0A;
+      --surface: #111111;
+      --surface-2: #1A1A1A;
+      --border: #222222;
+      --text: #E8E8E8;
+      --text-muted: #888888;
+      --rose: #E8C4C4;
+      --plum: #2D1B2E;
+      --gold: #C9974A;
+      --accent: #E8C4C4;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    .badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 120px 0 80px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 strong {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Sections */
+    section { padding: 60px 0; }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 300;
+      margin-bottom: 32px;
+      letter-spacing: -0.01em;
+    }
+
+    /* Pain Points */
+    .pain-points {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+    }
+
+    .pain-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pain-point:last-child { border-bottom: none; }
+
+    .pain-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(232, 196, 196, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .pain-point h3 {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .pain-point p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Demo Preview */
+    .demo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .demo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(232, 196, 196, 0.08);
+    }
+
+    .demo-image {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(135deg, var(--plum), #4a2d4c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .demo-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+
+    .demo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.8), transparent);
+      display: flex;
+      align-items: flex-end;
+      padding: 32px;
+    }
+
+    .demo-overlay span {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .demo-body {
+      padding: 32px;
+    }
+
+    .demo-body h3 {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .demo-body p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .demo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: gap 0.3s;
+    }
+
+    .demo-link:hover { gap: 12px; }
+
+    /* What's Included */
+    .included-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .included-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    .included-check {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(201, 151, 74, 0.15);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 12px;
+    }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .price-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .price-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .price-card.featured {
+      border-color: var(--accent);
+      position: relative;
+    }
+
+    .price-card.featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: var(--bg);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 16px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .price-name {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .price-amount {
+      font-size: 40px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .price-currency {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .price-features {
+      list-style: none;
+      text-align: left;
+      space-y: 8px;
+    }
+
+    .price-features li {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .price-features li:last-child { border-bottom: none; }
+
+    .price-features li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    .cta-section h2 {
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 8px 30px rgba(232, 196, 196, 0.3);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 20px 0;
+    }
+
+    @media (max-width: 640px) {
+      .pain-points { padding: 24px; }
+      .demo-image { height: 250px; }
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <div class="badge">Web Vanguard · Proposal</div>
+      <h1>We built <strong>Aura Studio's</strong> website.<br>Motion Fitness Center could look like this.</h1>
+      <p>A custom, high-converting website designed to attract and convert more clients for your fitness studio in Dubai.</p>
+    </div>
+  </header>
+
+  <!-- Pain Points -->
+  <section>
+    <div class="container">
+      <p class="section-label">The Problem</p>
+      <h2>What we noticed about your current site</h2>
+      <div class="pain-points">
+        <div class="pain-point">
+          <div class="pain-icon">✗</div>
+          <div>
+            <h3>No WhatsApp Button</h3>
+            <p>In Dubai, WhatsApp is the #1 way clients reach out. Without a floating button, you're losing instant leads.</p>
+          </div>
+        </div>
+        <div class="pain-point">
+          <div class="pain-icon">✗</div>
+          <div>
+            <h3>No Contact Form</h3>
+            <p>Visitors who want to book or enquire have no simple way to reach you directly from the website.</p>
+          </div>
+        </div>
+        <div class="pain-point">
+          <div class="pain-icon">✗</div>
+          <div>
+            <h3>No Google Maps Embed</h3>
+            <p>New clients can't easily find your studio location. A map builds trust and reduces friction.</p>
+          </div>
+        </div>
+        <div class="pain-point">
+          <div class="pain-icon">✗</div>
+          <div>
+            <h3>No Email Visible on Site</h3>
+            <p>There's no visible email address for enquiries, corporate bookings, or partnerships.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Preview -->
+  <section>
+    <div class="container">
+      <p class="section-label">The Solution</p>
+      <h2>See what we built for Aura Fitness Studio</h2>
+      <a href="https://aura-fitness-henna.vercel.app" target="_blank" rel="noopener" class="demo-card" style="display: block; text-decoration: none; color: inherit;">
+        <div class="demo-image">
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200&q=80" alt="Aura Fitness Studio preview">
+          <div class="demo-overlay">
+            <span>↗ Live Demo</span>
+          </div>
+        </div>
+        <div class="demo-body">
+          <h3>Aura Fitness Studio</h3>
+          <p>Ladies-only boutique fitness studio in Dubai — Pilates, Yoga, HIIT & Personal Training. Full responsive website with booking, WhatsApp, maps, and SEO.</p>
+          <span class="demo-link">View live site →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section>
+    <div class="container">
+      <p class="section-label">What You Get</p>
+      <h2>Everything included</h2>
+      <div class="included-grid">
+        <div class="included-item">
+          <div class="included-check">✓</div>
+          Custom responsive design (mobile-first)
+        </div>
+        <div class="included-item">
+          <div class="included-check">✓</div>
+          WhatsApp floating button for instant enquiries
+        </div>
+        <div class="included-item">
+          <div class="included-check">✓</div>
+          Contact form with email notifications
+        </div>
+        <div class="included-item">
+          <div class="included-check">✓</div>
+          Google Maps embed with your location
+        </div>
+        <div class="included-item">
+          <div class="included-check">✓</div>
+          SEO optimized for Dubai fitness searches
+        </div>
+        <div class="included-item">
+          <div class="included-check">✓</div>
+          Class schedule & trainer profiles
+        </div>
+        <div class="included-item">
+          <div class="included-check">✓</div>
+          Google Analytics tracking setup
+        </div>
+        <div class="included-item">
+          <div class="included-check">✓</div>
+          Fast hosting on Vercel (99.99% uptime)
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section>
+    <div class="container">
+      <p class="section-label">Investment</p>
+      <h2>Choose your plan</h2>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-name">Starter</div>
+          <div class="price-amount">1,500</div>
+          <div class="price-currency">AED · one-time</div>
+          <ul class="price-features">
+            <li>Single-page responsive website</li>
+            <li>WhatsApp button</li>
+            <li>Contact form</li>
+            <li>Google Maps</li>
+            <li>Basic SEO</li>
+          </ul>
+        </div>
+        <div class="price-card featured">
+          <div class="price-name">Launch</div>
+          <div class="price-amount">2,500</div>
+          <div class="price-currency">AED · one-time</div>
+          <ul class="price-features">
+            <li>Everything in Starter</li>
+            <li>Animations & transitions</li>
+            <li>Class schedule section</li>
+            <li>Trainer profiles</li>
+            <li>Schema markup & full SEO</li>
+            <li>Google Analytics setup</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-name">Growth</div>
+          <div class="price-amount">4,500</div>
+          <div class="price-currency">AED · one-time</div>
+          <ul class="price-features">
+            <li>Everything in Launch</li>
+            <li>Blog / content pages</li>
+            <li>Booking system integration</li>
+            <li>Multi-language (EN/AR)</li>
+            <li>Monthly maintenance (3 months)</li>
+            <li>Priority support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <p class="section-label">Let's Talk</p>
+      <h2>Ready to upgrade your online presence?</h2>
+      <p>Get a website that works as hard as you do. Let's discuss your project — no commitment required.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/971XXXXXXXXX?text=Hi!%20I%20saw%20the%20Aura%20Fitness%20demo%20and%20I'm%20interested%20in%20a%20website%20for%20my%20fitness%20studio." class="btn btn-primary" target="_blank" rel="noopener">
+          💬 Chat on WhatsApp
+        </a>
+        <a href="mailto:hello@webvanguard.co?subject=Website%20Enquiry%20-%20Fitness%20Studio" class="btn btn-outline">
+          ✉ hello@webvanguard.co
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 <a href="https://webvanguard.co" target="_blank" rel="noopener">Web Vanguard</a>. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
